@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>list task</h3>
+<table id="task">
+    <tr>
+        <th>STT</th>
+        <th>Name Category</th>
+        <th>Total amount</th>
+    </tr>
+    <tr th:each="s,sStatus : ${countMount}">
+        <td th:text="${sStatus.count}"></td>
+        <td th:text="${s.getNameC()}"></td>
+        <td th:text="${s.getAmount()}"></td>
+    </tr>
+</table>
+<footer th:replace="/layout::footer"></footer>
+</body>
+</html>

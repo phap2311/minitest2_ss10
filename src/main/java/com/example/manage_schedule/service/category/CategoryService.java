@@ -34,7 +34,7 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
-    public Iterable<CountAmount> totalAmount() {
+    public Iterable<CountAmount> getTotal() {
         return iCategoryRepository.getTotal();
     }
 }

@@ -1,6 +1,7 @@
 package com.example.manage_schedule.controller;
 
 import com.example.manage_schedule.model.Category;
+import com.example.manage_schedule.model.DTO.CountAmount;
 import com.example.manage_schedule.model.Task;
 import com.example.manage_schedule.service.category.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,13 @@ public class CategoryController {
         attributes.addFlashAttribute("success","delete category success");
         return "redirect:/category";
     }
-    @GetMapping("/")
+    @GetMapping("/total")
+    public ModelAndView getTotal(){
+        ModelAndView modelAndView = new ModelAndView("/category/total");
+        Iterable<CountAmount>countAmounts = iCategoryService.getTotal();
+        modelAndView.addObject("countMount",countAmounts);
+        return modelAndView;
+    }
+
 
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ICategoryRepository extends CrudRepository<Category, Long> {
-    @Query(nativeQuery = true, value = "select category.nameC, sum(task.amount) as total_money from category join task on category.id = task.category_id group by category.namec;")
+    @Query(nativeQuery = true, value = "select category.nameC, sum(task.amount) as Amount from category join task on category.id = task.category_id group by category.namec;")
     Iterable<CountAmount> getTotal();
 
 

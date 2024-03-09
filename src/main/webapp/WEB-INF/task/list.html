@@ -20,7 +20,12 @@
         <span th:text="${message}"></span>
     </div>
 </div>
-
+<div style="margin-bottom: 10px; margin-left: 110px">
+    <form th:action="@{/task/search}" method="get">
+        <label><input type="text" name="search"></label>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
 <table id = "task">
     <thead>
     <tr>
@@ -46,7 +51,13 @@
         <td><a th:href="@{/task/delete/{id}(id=${c.getId()})}">delete</a></td>
     </tr>
     </tbody>
+
 </table>
+<a class="btn btn-primary" th:if="${task.hasPrevious()}"
+   th:href="@{'/task?page='+${task.number - 1}}">Previous</a>
+<span th:text="${task.number + 1}"></span> | <span th:text="${task.totalPages}"></span>
+<a class="btn btn-primary" th:if="${task.hasNext()}"
+   th:href="@{'/task?page='+${task.number + 1}}">Next</a>
 <footer th:replace="/layout :: footer"></footer>
 </body>
 </html>
